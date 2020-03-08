@@ -152,7 +152,7 @@ body {
         font-family: 'Lato', sans-serif;
     }
     
-    #slug .unread {
+    #slug #unread {
 		width: 100%;
         height: 1px;
         margin-bottom: 10px;
@@ -162,7 +162,7 @@ body {
         text-align: center;
     }
     
-    	.unread .line {
+    	#unread .line {
         	background: #d84745;
             width: 100%;
             height: 1px;
@@ -170,7 +170,7 @@ body {
             float: left;
 		}
         
-        .unread .fr {
+        #unread .fr {
         	margin-top: -6px;
             text-transform: uppercase;
             font-size: 7pt;
@@ -251,9 +251,13 @@ body {
 	
     /*Close, Restore Down, Minimise buttons*/
 	.icon {
+	    width: 25px;
+	    height: 100%;
     	float: right;
         padding: 3px 6px;
+        box-sizing: border-box;
         cursor: pointer;
+        text-align: center;
     }
     
     .icon:hover {
@@ -284,20 +288,14 @@ body {
 					<div title="Courtney L." class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/1592/1592043.svg"/></div>
                 </div>
                 
-                <script>
-                    function updateScroll(){
-                        var element = document.getElementById("chat");
-                        var isScrolledToBottom = element.scrollHeight - element.clientHeight <= element.scrollTop + 1;
-                        if(isScrolledToBottom)
-                            out.scrollTop = out.scrollHeight - out.clientHeight;
-                    }
-                </script>
-                
                 <div id="chat">
-                    <div class="unread"><div class="line"><div class="fr"><span style="background: #eeeeee; padding: 0px 10px;">unread from here</span></div></div></div>
-                	<div class="message">Hey</div>
-                    <div class="message">Can you finish up the documentation?</div>
-                    <div class="message">The rest of the team is going to be busy fixing bugs</div>
+                    <div class="message you">Thank you for your help</div>
+                	<div class="message">No problem</div>
+                    <div class="message"><img class="emoji" src="https://discordapp.com/assets/2e41bfdeba797283ee9da9bb439c3ece.svg"/></div>
+                    
+                    <div id="unread"><div class="line"><div class="fr"><span style="background: #eeeeee; padding: 0px 10px;">unread from here</span></div></div></div>
+                    <div class="message">Hey, can you finish up the documentation?</div>
+                    <div class="message">The rest of the team is going to be busy fixing bugs.</div>
                 </div>
                 <input type="text" id="input" onkeypress="uniCharCode(event)" placeholder="Type your message here..."></input>
                 
@@ -307,7 +305,6 @@ body {
                         var char = event.which || event.keyCode;
                         var createMessage = document.createElement("div");
                         createMessage.className = 'message you';
-                        createMessage.style.display = 'hidden';
                         
                         document.onkeydown = function(event) {
                             if(event.keyCode == 13) {
@@ -315,20 +312,22 @@ body {
                                 createMessage.innerHTML = input;
                                 document.getElementById("chat").appendChild(createMessage);
                                 document.getElementById("input").value = '';
-                                //respond(parseFloat("-0.1"));
+                                respond(parseFloat("-0.1"));
+                                
+                                document.getElementById("unread").style.display = 'none';
                                 return input;
                             }
                         }
                     }
                     
                     function respond(sentiment) {
-                    	var responseMessage = document.createElement("div");
+                        var responseMessage = document.createElement("div");
                         responseMessage.className = 'message';
-                    	if(sentiment > 0.0){
+                        if (sentiment > 0.0) {
                             responseMessage.innerHTML = 'Great. It needs to get done by tonight.';
                         }
-                        else{
-                        	responseMessage.innerHTML = 'You should really learn to pull your own weight.';
+                        else {
+                            responseMessage.innerHTML = 'You should really learn to pull your own weight.';
                         }
                         document.getElementById("chat").appendChild(responseMessage);
                     }
@@ -345,7 +344,8 @@ body {
 					<blockquote>public static void main(String args[]) {<br>
 					<blockquote>System.out.println("Hello World");</blockquote>
 					}</blockquote>
-					} |
+					}
+					<button>Do Work</button>
                 </div>
 				<div id="terminal">According to all known laws of aviation, there is no way that a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyways. Because bees don't care what humans think is impossible.<br>>_</div>
             </div>
