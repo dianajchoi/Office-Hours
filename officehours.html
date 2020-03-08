@@ -114,10 +114,43 @@ body {
     border-left: solid 2px grey;
 }
 
+/*"Psuedocode"*/
+#jk #codearea {
+	background: lightgray;
+	width: 100%;
+    height: 300px;
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: Monospace;
+}
+
+#jk #terminal {
+	background: black;
+	width: 100%;
+    height: 125px;
+    float: left;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 10px;
+    font-family: Monospace;
+    color: lime;
+}
+
 /*Bottom bar of the OS*/
 #menu {
 	background: darksalmon;
 	width: 100%; height: 10%;
+    float: left;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+#menu .bread {
+	background: grey;
+    width: 30px; height: 30px;
+    border-radius: 100%;
+    margin-right: 10px;
     float: left;
 }
 
@@ -157,12 +190,12 @@ body {
                 	<div class="icon exit">&#215;</div><div class="icon">&#9634;</div><div class="icon">&mdash;</div>
                 </div>
                 <div id="users">
-                	<div class="pfp"><img src="https://image.flaticon.com/icons/png/512/316/316309.png"/><div class="activity online"></div></div>
-                    <div class="pfp"><img src="https://image.flaticon.com/icons/svg/1308/1308491.svg"/><div class="activity online"></div></div>
-                    <div class="pfp"><img src="https://image.flaticon.com/icons/svg/1308/1308487.svg"/><div class="activity idle"></div></div>
-                    <div class="pfp"><img src="https://image.flaticon.com/icons/svg/374/374974.svg"/><div class="activity busy"></div></div>
-                    <div class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/374/374982.svg"/></div>
-                    <div class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/1592/1592043.svg"/></div>
+					<div class="pfp"><img src="https://image.flaticon.com/icons/png/512/316/316309.png"/><div class="activity online"></div></div>
+					<div class="pfp"><img src="https://image.flaticon.com/icons/svg/1308/1308491.svg"/><div class="activity online"></div></div>
+					<div class="pfp"><img src="https://image.flaticon.com/icons/svg/1308/1308487.svg"/><div class="activity idle"></div></div>
+					<div class="pfp"><img src="https://image.flaticon.com/icons/svg/374/374974.svg"/><div class="activity busy"></div></div>
+					<div class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/374/374982.svg"/></div>
+					<div class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/1592/1592043.svg"/></div>
                 </div>
                 <div class="chat">
                 	<div class="message">hello world.</div>
@@ -177,9 +210,22 @@ body {
             	<div class="topbar">
                 	<div class="icon exit">&#215;</div><div class="icon">&#9634;</div><div class="icon">&mdash;</div>
                 </div>
+                <div id="codearea">
+					class A {<br>
+					<blockquote>public static void main(String args[]) {<br>
+					<blockquote>System.out.println("Hello World");</blockquote>
+					}</blockquote>
+					} |
+                </div>
+				<div id="terminal">According to all known laws of aviation, there is no way that a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyways. Because bees don't care what humans think is impossible.<br>>_</div>
             </div>
-            
-            <div id="menu"></div>
+            <div id="menu">
+            	<div class="bread"></div>
+                <div class="bread"></div>
+                <div class="bread"></div>
+                <div class="bread"></div>
+                <div class="bread"></div>
+            </div>
         </div>
     </div>
 </body>
