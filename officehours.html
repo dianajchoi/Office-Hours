@@ -294,14 +294,10 @@ body {
                 </script>
                 
                 <div id="chat">
-                	<div class="message">hello world.</div>
-                    <div class="message"><img class="emoji" src="https://discordapp.com/assets/2e41bfdeba797283ee9da9bb439c3ece.svg"/></div>
-                    <div class="message you">goodbye world</div>
-                    <div class="message you"><img class="emoji" src="https://discordapp.com/assets/2ea1f6bba4448fa4e8d9504fe976095d.svg"/></div>
-                    
                     <div class="unread"><div class="line"><div class="fr"><span style="background: #eeeeee; padding: 0px 10px;">unread from here</span></div></div></div>
-                    <div class="message">Haha and then what?</div>
-                    <!--<div id="last" class="message you"></div>-->
+                	<div class="message">Hey</div>
+                    <div class="message">Can you finish up the documentation?</div>
+                    <div class="message">The rest of the team is going to be busy fixing bugs</div>
                 </div>
                 <input type="text" id="input" onkeypress="uniCharCode(event)" placeholder="Type your message here..."></input>
                 
@@ -319,9 +315,22 @@ body {
                                 createMessage.innerHTML = input;
                                 document.getElementById("chat").appendChild(createMessage);
                                 document.getElementById("input").value = '';
+                                //respond(parseFloat("-0.1"));
                                 return input;
                             }
                         }
+                    }
+                    
+                    function respond(sentiment) {
+                    	var responseMessage = document.createElement("div");
+                        responseMessage.className = 'message';
+                    	if(sentiment > 0.0){
+                            responseMessage.innerHTML = 'Great. It needs to get done by tonight.';
+                        }
+                        else{
+                        	responseMessage.innerHTML = 'You should really learn to pull your own weight.';
+                        }
+                        document.getElementById("chat").appendChild(responseMessage);
                     }
                 </script>
             </div>
