@@ -59,6 +59,12 @@ body {
     height: 650px;
 }
 
+blockquote {
+    margin: 5px 20px;
+    border-left: 2px solid #eeeeee;
+    padding-left: 10px;
+}
+
 #computer {
     width: 850px; height: 500px;
     margin: 0 auto;
@@ -130,6 +136,7 @@ body {
         border-radius: 5px;
         float: left; clear: both;
         padding: 10px;
+        word-wrap: break-word;
     }
     
     #chat .you {
@@ -197,6 +204,24 @@ body {
     box-sizing: border-box;
     font-family: Monospace;
 }
+
+    #codearea #workCount {
+        display: inline;
+        font-weight: 900;
+    }
+    
+    #codearea #coding {
+        border: none;
+        border-radius: 5px;
+        padding: 5px 8px;
+        font-family: Monospace;
+        font-weight: 900;
+    }
+    
+    #coding:hover {
+        background: #000000;
+        color: #ffffff;
+    }
 
 #jk #terminal {
 	background: black;
@@ -323,7 +348,7 @@ body {
                             }
                         }
                     }
-
+                    
                     function postAjax(url, data, success) {
                         var params = typeof data == 'string' ? data : Object.keys(data).map(
                                 function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
@@ -340,8 +365,7 @@ body {
                         return xhr;
                     }
 
-                    /*
-                        function respond(sentiment) {
+                    /*function respond(sentiment) {
                         var responseMessage = document.createElement("div");
                         responseMessage.className = 'message';
                         if (sentiment > 0.0) {
@@ -350,8 +374,7 @@ body {
                         else {
                             responseMessage.innerHTML = 'You should really learn to pull your own weight.';
                         }
-                        document.getElementById("chat").appendChild(responseMessage);
-                    */
+                        document.getElementById("chat").appendChild(responseMessage);*/
                 </script>
             </div>
             
@@ -361,13 +384,25 @@ body {
                 	<div class="icon exit">&#215;</div><div class="icon">&#9634;</div><div class="icon">&mdash;</div>
                 </div>
                 <div id="codearea">
-					class A {<br>
-					<blockquote>public static void main(String args[]) {<br>
-					<blockquote>System.out.println("Hello World");</blockquote>
-					}</blockquote>
-					}
-					<button>Do Work</button>
+					<button id="coding">Do Work</button> You did work <div id="workCount"></div> amount of times.<br><br>
+					class HelloWorld 
+                    <blockquote>{ 
+                        <blockquote>public static void main(String args[]) 
+                        { 
+                            <blockquote>System.out.println("According to all known laws of aviation, there is no way that a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyways. Because bees don't care what humans think is impossible.");</blockquote>
+                        }</blockquote>
+                    }</blockquote>
                 </div>
+                
+                <script>
+                var c = parseInt('0');
+                document.getElementById("workCount").innerHTML = c;
+                    document.getElementById("coding").addEventListener("click", function() {
+                       c++;
+                       document.getElementById("workCount").innerHTML = c;
+                    });
+                </script>
+                
 				<div id="terminal">According to all known laws of aviation, there is no way that a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyways. Because bees don't care what humans think is impossible.<br>>_</div>
             </div>
             <div id="menu">
