@@ -1,19 +1,186 @@
 <!DOCTYPE html>
 <html>
-<head>	<title>Test Website</title>
+<head>
+	<title>Office Hours</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900|Spartan&display=swap" rel="stylesheet">
+    
+<style type="text/css">
+
+body {
+	background: url('http://media.tumblr.com/tumblr_mex6qbS3q71rbvno1.png');
+	padding: 0; margin: 0;
+    font: 11pt Lato;
+}
+
+#container {
+	background: lightgrey;
+    margin: 0 auto;
+    margin-top: 5%;
+    padding-top: 50px;
+    width: 1100px;
+    height: 600px;
+}
+
+#computer {
+    width: 850px; height: 500px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 15px solid grey;
+}
+
+/*SLUG "interface", left side of screen*/
+#slug {
+	background: white;
+    width: 424px; height: 90%;
+    float: left;
+}
+
+#slug #users {
+	width: 100%;
+    height: 70px;
+    float: left;
+}
+
+/*SLUG icons*/
+#slug .pfp {
+	background: grey;
+    width: 50px; height: 50px;
+    margin: 10px 0px 10px 10px;
+    float: left;
+    border-radius: 100%;
+}
+
+	.pfp img {
+    	width: 50px; height: 50px;
+        float: left;
+    }
+
+	.inactive {
+    	opacity: 0.5;
+    }
+    
+    /*circle at bottom left of icons*/
+    .activity {
+    	background: grey;
+        margin-top: -18px;
+    	width: 15px; height: 15px;
+    	border-radius: 100%;
+        border: 3px solid white;
+        float: left;
+    }
+	.online { background: green; }
+   	.idle { background: yellow; }
+    .busy { background: red; }
+
+/*SLUG chats*/
+#slug .chat {
+	background: lightgray;
+	width: 100%;
+    height: 300px;
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+	.chat .message {
+    	background: orange;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        float: left; clear: both;
+        padding: 10px;
+    }
+    
+    .chat .you {
+    	background: white;
+        float: right; clear: both;
+    }
+    
+    /*textbox area*/
+    #slug textarea {
+    	width: 100%; height: 55px;
+        margin: 0;
+        border: none;
+        box-sizing: border-box;
+        padding: 10px;
+        resize: none;
+        font-family: Lato;
+    }
+
+/*"JustKoding" IDE*/
+#jk {
+	background: white;
+    width: 424px; height: 90%;
+    float: right;
+    border-left: solid 2px grey;
+}
+
+/*Bottom bar of the OS*/
+#menu {
+	background: darksalmon;
+	width: 100%; height: 10%;
+    float: left;
+}
+
+/*Window header of SLUG and JK*/
+.topbar {
+	background: darkgrey;
+	width: 100%;
+    height: 25px;
+    overflow: hidden;
+    font-weight: 900;
+}
+	
+    /*Close, Restore Down, Minimise buttons*/
+	.icon {
+    	float: right;
+        padding: 3px 6px;
+        border-left: 2px solid grey;
+        cursor: pointer;
+    }
+    
+    .icon:hover {
+		background: grey;
+    }
+    
+    .exit:hover {
+    	background: red;
+    }
+
+</style>
 </head>
+
 <body>
-	<div id="overallBox">
-		<div id="title">
-			<h1>Testing</h1>
-		</div>
-		<div id=centerBox>
-			<div id=promptBox>
-				<label for="name">Message</label>
-				<input type="text" id="name" name="name">
-			</div>
-			<button id=start>Button</button>
-		</div>
-	</div>
+	<div id="container">
+    	<div id="computer">
+        	<div id="slug">
+            	<div class="topbar">
+                	<div class="icon exit">&#215;</div><div class="icon">&#9634;</div><div class="icon">&mdash;</div>
+                </div>
+                <div id="users">
+                	<div class="pfp"><img src="https://image.flaticon.com/icons/png/512/316/316309.png"/><div class="activity online"></div></div>
+                    <div class="pfp"><img src="https://image.flaticon.com/icons/svg/1308/1308491.svg"/><div class="activity online"></div></div>
+                    <div class="pfp"><img src="https://image.flaticon.com/icons/svg/1308/1308487.svg"/><div class="activity idle"></div></div>
+                    <div class="pfp"><img src="https://image.flaticon.com/icons/svg/374/374974.svg"/><div class="activity busy"></div></div>
+                    <div class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/374/374982.svg"/></div>
+                    <div class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/1592/1592043.svg"/></div>
+                </div>
+                <div class="chat">
+                	<div class="message">hello world.</div>
+                    <div class="message">;]</div>
+                    <div class="message you">goodbye world</div>
+                    <div class="message you">):</div>
+                </div>
+                <textarea>Type here...</textarea>
+            </div>
+            
+			<div id="jk">
+            	<div class="topbar">
+                	<div class="icon exit">&#215;</div><div class="icon">&#9634;</div><div class="icon">&mdash;</div>
+                </div>
+            </div>
+            
+            <div id="menu"></div>
+        </div>
+    </div>
 </body>
 </html>
