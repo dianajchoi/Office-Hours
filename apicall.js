@@ -52,14 +52,14 @@ function analyzeSentiment(message)
 {
 	//extract "string=" string from message
 	message.substring(7);
-	start()
+	start(message)
 }
 
-async function start(){
-	const result = await sentimentFunction();
+async function start(message){
+	const result = await sentimentFunction(message);
 }
 
-const sentimentFunction = async function()
+const sentimentFunction = async function(message)
 {
 	// Imports the Google Cloud client library
 	const language = require('@google-cloud/language');
@@ -67,7 +67,7 @@ const sentimentFunction = async function()
 	// Creates a client
 	const client = new language.LanguageServiceClient();
 
-	const text = 'and i oop';
+	const text = message;
 
 	// Prepares a document, representing the provided text
 	const document = {
