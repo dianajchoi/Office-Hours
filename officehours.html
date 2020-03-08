@@ -21,6 +21,17 @@
     
 <style type="text/css">
 
+::-webkit-scrollbar{
+    background: #ffffff;
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb:vertical{
+    background: #d6d6d6;
+    height: auto;
+    border-radius: 3px;
+}
+
 body {
 	background: url('http://media.tumblr.com/tumblr_mex6qbS3q71rbvno1.png');
 	padding: 0; margin: 0;
@@ -290,23 +301,25 @@ body {
                     
                     <div class="unread"><div class="line"><div class="fr"><span style="background: #eeeeee; padding: 0px 10px;">unread from here</span></div></div></div>
                     <div class="message">Haha and then what?</div>
-                    <div id="last" class="message you"><img style="width: 30px" src="https://i.imgur.com/kccKkFe.gif"/></div>
+                    <!--<div id="last" class="message you"></div>-->
                 </div>
-                <input type="text" id="input" onkeypress="uniCharCode(event)" placeholder="Type here..."></input>
+                <input type="text" id="input" onkeypress="uniCharCode(event)" placeholder="Type your message here..."></input>
                 
                 <!--Event Handler, prints new message when enter is pressed-->
                 <script>
                     function uniCharCode(event) {
                         var char = event.which || event.keyCode;
                         var createMessage = document.createElement("div");
-                        last.style.display = 'hidden';
+                        createMessage.className = 'message you';
+                        createMessage.style.display = 'hidden';
                         
                         document.onkeydown = function(event) {
                             if(event.keyCode == 13) {
                                 var input = document.getElementById("input").value;
                                 createMessage.innerHTML = input;
-                                document.getElementById("last").innerHTML = input;
+                                document.getElementById("chat").appendChild(createMessage);
                                 document.getElementById("input").value = '';
+                                return input;
                             }
                         }
                     }
