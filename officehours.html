@@ -3,13 +3,40 @@
 <head>
 	<title>Office Hours</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900|Spartan&display=swap" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="//static.tumblr.com/iuw14ew/VSQma1786/jquery.style-my-tooltips.js"></script>
+
+<script>
+    (function($){
+        $(document).ready(function(){
+            $("[title]").style_my_tooltips({
+                tip_follows_cursor:true,
+                tip_delay_time:100,
+                tip_fade_speed:100,
+                attribute:"title"
+            });
+        });
+    })(jQuery);
+</script>
     
 <style type="text/css">
 
 body {
 	background: url('http://media.tumblr.com/tumblr_mex6qbS3q71rbvno1.png');
 	padding: 0; margin: 0;
-    font: 11pt Lato;
+    font: 11pt 'Lato', sans-serif;
+}
+
+#s-m-t-tooltip {
+    color: #ffffff;
+    max-width:150px;
+    padding: 5px 10px;
+    margin-top: 25px;
+    background-color: black;
+    font-size: 8pt;
+    text-transform: uppercase;
+    z-index: 999999;
+    letter-spacing: 0.5pt;
 }
 
 #container {
@@ -17,15 +44,15 @@ body {
     margin: 0 auto;
     margin-top: 5%;
     padding-top: 50px;
-    width: 1100px;
-    height: 600px;
+    width: 1400px;
+    height: 700px;
 }
 
 #computer {
     width: 850px; height: 500px;
     margin: 0 auto;
     border-radius: 5px;
-    border: 15px solid grey;
+    border: 15px solid #000000;
 }
 
 /*SLUG "interface", left side of screen*/
@@ -41,40 +68,43 @@ body {
     float: left;
 }
 
-/*SLUG icons*/
-#slug .pfp {
-	background: grey;
-    width: 50px; height: 50px;
-    margin: 10px 0px 10px 10px;
-    float: left;
-    border-radius: 100%;
-}
-
+    /*SLUG icons*/
+    #slug .pfp {
+    	background: #e0e0e0;
+        width: 50px; height: 50px;
+        margin: 10px 0px 10px 10px;
+        float: left;
+        border-radius: 100%;
+    }
+    
+    #users #current { background: #d6d6d6; float: left; padding-right: 10px; }
+    
 	.pfp img {
     	width: 50px; height: 50px;
         float: left;
     }
 
 	.inactive {
-    	opacity: 0.5;
-    }
+    	opacity: 0.25;
+	}
     
     /*circle at bottom left of icons*/
     .activity {
-    	background: grey;
+    	background: #e0e0e0;
         margin-top: -18px;
     	width: 15px; height: 15px;
     	border-radius: 100%;
         border: 3px solid white;
         float: left;
     }
-	.online { background: green; }
-   	.idle { background: yellow; }
-    .busy { background: red; }
+	.online { background: #759b58; }
+   	.idle { background: #fcd279; }
+    .busy { background: #d84745; }
+    .curStat { border-color: #d6d6d6; }
 
 /*SLUG chats*/
 #slug .chat {
-	background: lightgray;
+	background: #eeeeee;
 	width: 100%;
     height: 300px;
     float: left;
@@ -83,8 +113,8 @@ body {
 }
 
 	.chat .message {
-    	background: orange;
-        margin-bottom: 10px;
+    	background: #d6d6d6;
+        margin-bottom: 5px;
         border-radius: 5px;
         float: left; clear: both;
         padding: 10px;
@@ -95,6 +125,10 @@ body {
         float: right; clear: both;
     }
     
+    .message .emoji {
+        width: 25px;
+    }
+    
     /*textbox area*/
     #slug textarea {
     	width: 100%; height: 55px;
@@ -103,20 +137,47 @@ body {
         box-sizing: border-box;
         padding: 10px;
         resize: none;
-        font-family: Lato;
+        font-family: 'Lato', sans-serif;
     }
+    
+    #slug .unread {
+		width: 100%;
+        height: 1px;
+        margin-bottom: 10px;
+        float: left;
+        padding: 15px 0px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    
+    	.unread .line {
+        	background: #d84745;
+            width: 100%;
+            height: 1px;
+            margin-bottom: -10px;
+            float: left;
+		}
+        
+        .unread .fr {
+        	margin-top: -6px;
+            text-transform: uppercase;
+            font-size: 7pt;
+            color: #d84745;
+            font-weight: 900;
+            letter-spacing: 0.5pt;
+        }
 
 /*"JustKoding" IDE*/
 #jk {
 	background: white;
     width: 424px; height: 90%;
     float: right;
-    border-left: solid 2px grey;
+    border-left: solid 2px #e0e0e0;
 }
 
 /*"Psuedocode"*/
 #jk #codearea {
-	background: lightgray;
+	background: #ffffff;
 	width: 100%;
     height: 300px;
     float: left;
@@ -134,12 +195,12 @@ body {
     box-sizing: border-box;
     padding: 10px;
     font-family: Monospace;
-    color: lime;
+    color: #9ed177;
 }
 
 /*Bottom bar of the OS*/
 #menu {
-	background: darksalmon;
+	background: #3a606e;
 	width: 100%; height: 10%;
     float: left;
     box-sizing: border-box;
@@ -147,36 +208,48 @@ body {
 }
 
 #menu .bread {
-	background: grey;
+	background: #e0e0e0;
     width: 30px; height: 30px;
     border-radius: 100%;
     margin-right: 10px;
     float: left;
+    box-sizing: border-box;
+    padding: 8px;
 }
+
+    #menu .bread img {
+        width: 15px;
+    }
 
 /*Window header of SLUG and JK*/
 .topbar {
-	background: darkgrey;
+	background: #aaae8e;
 	width: 100%;
     height: 25px;
     overflow: hidden;
     font-weight: 900;
 }
+
+    .appName {
+        float: left;
+        text-transform: uppercase;
+        font-size: 8pt;
+        padding: 6px 10px;
+    }
 	
     /*Close, Restore Down, Minimise buttons*/
 	.icon {
     	float: right;
         padding: 3px 6px;
-        border-left: 2px solid grey;
         cursor: pointer;
     }
     
     .icon:hover {
-		background: grey;
+		background: #607b7d;
     }
     
     .exit:hover {
-    	background: red;
+    	background: #d84745;
     }
 
 </style>
@@ -187,27 +260,31 @@ body {
     	<div id="computer">
         	<div id="slug">
             	<div class="topbar">
+            	    <div class="appName">Slug &ndash; instant messaging</div>
                 	<div class="icon exit">&#215;</div><div class="icon">&#9634;</div><div class="icon">&mdash;</div>
                 </div>
                 <div id="users">
-					<div class="pfp"><img src="https://image.flaticon.com/icons/png/512/316/316309.png"/><div class="activity online"></div></div>
-					<div class="pfp"><img src="https://image.flaticon.com/icons/svg/1308/1308491.svg"/><div class="activity online"></div></div>
-					<div class="pfp"><img src="https://image.flaticon.com/icons/svg/1308/1308487.svg"/><div class="activity idle"></div></div>
-					<div class="pfp"><img src="https://image.flaticon.com/icons/svg/374/374974.svg"/><div class="activity busy"></div></div>
-					<div class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/374/374982.svg"/></div>
-					<div class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/1592/1592043.svg"/></div>
+                    <div id="current"><div class="pfp" title="Stephen P."><img src="https://image.flaticon.com/icons/png/512/316/316309.png"/><div class="activity online curStat"></div></div></div>
+                    <div title="Tim G." class="pfp"><img src="https://image.flaticon.com/icons/svg/1308/1308491.svg"/><div class="activity online"></div></div>
+                    <div title="Luke E." class="pfp"><img src="https://image.flaticon.com/icons/svg/1308/1308487.svg"/><div class="activity idle"></div></div>
+					<div title="Brandon M." class="pfp"><img src="https://image.flaticon.com/icons/svg/374/374974.svg"/><div class="activity busy"></div></div>
+					<div title="Harvey S." class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/374/374982.svg"/></div>
+					<div title="Courtney L." class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/1592/1592043.svg"/></div>
                 </div>
                 <div class="chat">
                 	<div class="message">hello world.</div>
-                    <div class="message">;]</div>
+                    <div class="message"><img class="emoji" src="https://discordapp.com/assets/2e41bfdeba797283ee9da9bb439c3ece.svg"/></div>
                     <div class="message you">goodbye world</div>
-                    <div class="message you">):</div>
+                    <div class="message you"><img class="emoji" src="https://discordapp.com/assets/2ea1f6bba4448fa4e8d9504fe976095d.svg"/></div>
+                    <div class="unread"><div class="line"><div class="fr"><span style="background: #eeeeee; padding: 0px 10px;">unread from here</span></div></div></div>
+                    <div class="message">haha what if i was there</div>
                 </div>
                 <textarea>Type here...</textarea>
             </div>
             
 			<div id="jk">
             	<div class="topbar">
+            	    <div class="appName">JK IDE &ndash; Just\Koding</div>
                 	<div class="icon exit">&#215;</div><div class="icon">&#9634;</div><div class="icon">&mdash;</div>
                 </div>
                 <div id="codearea">
@@ -220,11 +297,11 @@ body {
 				<div id="terminal">According to all known laws of aviation, there is no way that a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyways. Because bees don't care what humans think is impossible.<br>>_</div>
             </div>
             <div id="menu">
-            	<div class="bread"></div>
-                <div class="bread"></div>
-                <div class="bread"></div>
-                <div class="bread"></div>
-                <div class="bread"></div>
+            	<div class="bread"><img src="https://image.flaticon.com/icons/svg/684/684834.svg"/></div>
+                <div class="bread"><img src="https://image.flaticon.com/icons/svg/684/684804.svg"/></div>
+                <div class="bread"><img src="https://image.flaticon.com/icons/svg/684/684826.svg"/></div>
+                <div class="bread"><img src="https://image.flaticon.com/icons/svg/684/684806.svg"/></div>
+                <div class="bread"><img src="https://image.flaticon.com/icons/svg/684/684817.svg"/></div>
             </div>
         </div>
     </div>
