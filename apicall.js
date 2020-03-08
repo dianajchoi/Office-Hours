@@ -16,9 +16,13 @@ var server = http.createServer(function(request, response)
 				body += chunk.toString();
 			});
 			request.on('end', () =>{
-				analyzeSentiment(body);
+				body = decodeURI(body);
 				console.log(body);
-				response.end('ok');
+				analyzeSentiment(body).then((result)=>{
+					console.log(result);
+					response.end(""+result.toString());
+				})
+				
 			});
 			break;
 		//if html page detected, return page
@@ -48,15 +52,16 @@ var server = http.createServer(function(request, response)
 });
 server.listen(8082);
 
-function analyzeSentiment(message)
+async function analyzeSentiment(message)
 {
 	//extract "string=" string from message
 	message.substring(7);
-	start(message)
+	return await start(message);
 }
 
 async function start(message){
-	const result = await sentimentFunction(message);
+	let temp=await sentimentFunction(message);
+	return temp;
 }
 
 const sentimentFunction = async function(message)
@@ -79,15 +84,9 @@ const sentimentFunction = async function(message)
 	const [result] = await client.analyzeSentiment({document});
 
 	const sentiment = result.documentSentiment;
-	console.log(`Document sentiment:`);
-	console.log(`  Score: ${sentiment.score}`);
-	console.log(`  Magnitude: ${sentiment.magnitude}`);
-
-	const sentences = result.sentences;
-	sentences.forEach(sentence => {
-	  console.log(`Sentence: ${sentence.text.content}`);
-	  console.log(`  Score: ${sentence.sentiment.score}`);
-	  console.log(`  Magnitude: ${sentence.sentiment.magnitude}`);
-	});
+	console.log(`${sentiment.score}`);
+	var sent = sentiment.score;
+	//send back to frontend
+	return sent;
 }
 
