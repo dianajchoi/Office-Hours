@@ -103,16 +103,17 @@ body {
     .curStat { border-color: #d6d6d6; }
 
 /*SLUG chats*/
-#slug .chat {
+#slug #chat {
 	background: #eeeeee;
 	width: 100%;
     height: 300px;
     float: left;
     padding: 10px;
     box-sizing: border-box;
+    overflow: auto;
 }
 
-	.chat .message {
+	#chat .message {
     	background: #d6d6d6;
         margin-bottom: 5px;
         border-radius: 5px;
@@ -120,7 +121,7 @@ body {
         padding: 10px;
     }
     
-    .chat .you {
+    #chat .you {
     	background: white;
         float: right; clear: both;
     }
@@ -130,7 +131,7 @@ body {
     }
     
     /*textbox area*/
-    #slug textarea {
+    #slug input {
     	width: 100%; height: 55px;
         margin: 0;
         border: none;
@@ -271,15 +272,45 @@ body {
 					<div title="Harvey S." class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/374/374982.svg"/></div>
 					<div title="Courtney L." class="pfp inactive"><img src="https://image.flaticon.com/icons/svg/1592/1592043.svg"/></div>
                 </div>
-                <div class="chat">
+                
+                <script>
+                    function updateScroll(){
+                        var element = document.getElementById("chat");
+                        var isScrolledToBottom = element.scrollHeight - element.clientHeight <= element.scrollTop + 1;
+                        if(isScrolledToBottom)
+                            out.scrollTop = out.scrollHeight - out.clientHeight;
+                    }
+                </script>
+                
+                <div id="chat">
                 	<div class="message">hello world.</div>
                     <div class="message"><img class="emoji" src="https://discordapp.com/assets/2e41bfdeba797283ee9da9bb439c3ece.svg"/></div>
                     <div class="message you">goodbye world</div>
                     <div class="message you"><img class="emoji" src="https://discordapp.com/assets/2ea1f6bba4448fa4e8d9504fe976095d.svg"/></div>
+                    
                     <div class="unread"><div class="line"><div class="fr"><span style="background: #eeeeee; padding: 0px 10px;">unread from here</span></div></div></div>
-                    <div class="message">haha what if i was there</div>
+                    <div class="message">Haha and then what?</div>
+                    <div id="last" class="message you"><img style="width: 30px" src="https://i.imgur.com/kccKkFe.gif"/></div>
                 </div>
-                <textarea>Type here...</textarea>
+                <input type="text" id="input" onkeypress="uniCharCode(event)" placeholder="Type here..."></input>
+                
+                <!--Event Handler, prints new message when enter is pressed-->
+                <script>
+                    function uniCharCode(event) {
+                        var char = event.which || event.keyCode;
+                        var createMessage = document.createElement("div");
+                        last.style.display = 'hidden';
+                        
+                        document.onkeydown = function(event) {
+                            if(event.keyCode == 13) {
+                                var input = document.getElementById("input").value;
+                                createMessage.innerHTML = input;
+                                document.getElementById("last").innerHTML = input;
+                                document.getElementById("input").value = '';
+                            }
+                        }
+                    }
+                </script>
             </div>
             
 			<div id="jk">
