@@ -5,4 +5,4 @@ This browser-based game is a software engineering simulation game, during which 
 
 This game was developed with the intent of raising awareness about possible negative behavior that a woman in the software engineering field may encounter. This includes sexist comments, implications of inappropriate sexual attention, and other toxic behaviors by coworkers. This game intentionally reinforces the invisible pressure put on female software engineers to be extra-polite and conforming to the status quo of the workplace in order to illustrate the less-obvious, but nonetheless toxic, environmental variables in the workplace that may serve to hamper the success and confidence of a woman in the field of software engineering.
 
-This game utilizes HTML, CSS, and JavaScript in conjunction with the Node.js framework to communicate with Google's Natural Language API. To run the game, the project must be hosted on a local web server.
+This game utilizes HTML, CSS, and JavaScript in conjunction with the Node.js framework to communicate with Google's Natural Language API.
